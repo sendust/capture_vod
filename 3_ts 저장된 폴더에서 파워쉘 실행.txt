@@ -1,0 +1,3 @@
+$out = [System.IO.File]::Create("merged_video.ts")
+Get-ChildItem *_segment_*.ts | ForEach-Object { if ($_.BaseName -match 'segment_(\d+)') { [PSCustomObject]@{ Seg = [int]$matches[1]; File = $_.FullName } } } | Sort-Object Seg | Group-Object Seg | ForEach-Object { $in = [System.IO.File]::OpenRead($_.Group[0].File); $in.CopyTo($out); $in.Close() }
+$out.Close()

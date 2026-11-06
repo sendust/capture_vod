@@ -1,0 +1,1 @@
+"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe" --proxy-server="127.0.0.1:8080"
